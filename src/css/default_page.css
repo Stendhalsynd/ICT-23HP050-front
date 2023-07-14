@@ -1,4 +1,4 @@
-main{
+main {
   /* desktop frame */
 
   position: absolute;
@@ -8,22 +8,30 @@ main{
   bottom: 0px;
 
   /* figma/black 5 */
-  background: #E0E0E0;
+  background: #e0e0e0;
 }
-.main_text{
-
-  /* Auto layout */
+.main_container {
+  position: relative;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+}
+.main_text {
+  /* Auto layout */
+  /* display: flex;
   flex-direction: row;
   align-items: flex-start;
-  padding: 0px;
+  padding: 0px; */
 
-  position: absolute;
-  left: 470px;
-  top: 170px;
+  /* position: absolute; */
+  /* left: 470px; */
+  /* top: 170px; */
 
-  width: 550px;
-  height: 100px;
+  /* width: 550px; */
+  /* height: 100px; */
 
   font-family: var(--font-Aldrich);
   font-style: normal;
@@ -31,39 +39,39 @@ main{
   font-size: 96px;
   line-height: 94px;
   /* identical to box height */
-  text-align: center;
+  /* text-align: center; */
 
   /* common/black */
-  color: #000000;
+  /* color: #000000; */
 
   /* Inside auto layout */
-  flex: none;
+  /* flex: none;
   order: 0;
-  flex-grow: 0;
-
+  flex-grow: 0; */
+  margin-bottom: 82px;
 }
-.default_button{
+.default_button {
   display: flex;
-  flex-direction: column;
+  /* flex-direction: row; */
   justify-content: center;
   align-items: center;
   padding: 10px 20px;
 
-  position: absolute;
+  /* position: absolute; */
   width: 300px;
   height: 60px;
-  left: 610px;
-  top: 380px;
+  /* left: 610px;
+  top: 380px; */
 
   /* secondary/default */
-  background: #6B6B6B;
+  background: #6b6b6b;
   border-radius: 12px;
 
   /* Inside auto layout */
-  flex: none;
+  /* flex: none;
   order: 0;
   align-self: stretch;
-  flex-grow: 0;
+  flex-grow: 0; */
 
   /* Other/Button */
   font-family: var(--font-Roboto);
@@ -72,42 +80,38 @@ main{
   font-size: 8px;
   line-height: 10px;
   /* identical to box height, or 143% */
-  display: flex;
+  /* display: flex;
   align-items: center;
-  text-align: center;
-  padding-left: 40px;
+  text-align: center; */
+  /* padding-left: 40px; */
 
   /* Palette/Gray/White */
-  color: #FFFFFF;
-
+  color: #ffffff;
 
   /* Inside auto layout */
-  flex: none;
+  /* flex: none;
   order: 0;
   align-self: stretch;
-  flex-grow: 0;
-
+  flex-grow: 0; */
 }
-.radioButton{
-
-  position: absolute;
+.radioButton {
+  /* position: absolute; */
   width: 15px;
   height: 15px;
- 
+
   align-items: center;
   /* Oval */
 
   box-sizing: border-box;
 
-  position: absolute;
+  /* position: absolute; */
   left: 110px;
   right: 12.5%;
   top: 20px;
   bottom: 12.5%;
   border-radius: 16px;
+  margin-right: 5px;
 
   /* Palette/Gray/White */
-  border: 3px solid #FFFFFF;
-
+  border: 3px solid #ffffff;
 }
-
