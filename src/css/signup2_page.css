@@ -1,0 +1,60 @@
+body {
+    position: absolute;
+    width: 1280px;
+    height: 720px;
+    left: 0px;
+    bottom: 0px;
+    background: #E0E0E0; /* figma/black 5 */
+  }
+
+  .main_text2 {
+    display: flex;
+    align-items: flex-start;
+    position: absolute;
+    left: 440px;
+    width: 550px;
+    height: 100px;
+    font: 400 96px/94px var(--font-Aldrich); /* font shorthand */
+    color: #000000; /* common/black */
+  }
+ 
+  .frame2 {
+    box-sizing: border-box;
+
+  /* Auto layout */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 38px 20px;
+  gap: 10px;
+  isolation: isolate;
+  position: absolute;
+  width: 600px;
+  height:450px; /*왜 안바뀌는거야 왜!~~~~ㅜㅜㅜ*/
+  left: 450px;
+  top: calc(50% - 386px/2 + 108px);
+
+  /* background/white */
+  background: #FFFFFF;
+  /* border/gray 30 */
+  border: 1px solid #C6C6C6;
+  border-radius: 15px;
+
+  /* font */
+  font-family: var(--font-Roboto);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+  }
+  
+  .inputButton2{
+    background-color: #ffffff;
+    height: 30px; /* Set a constant height for inputButton */
+    width: 484px;
+    border-radius: 12px;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+  }
