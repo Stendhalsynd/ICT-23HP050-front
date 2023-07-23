@@ -28,9 +28,15 @@ const StyledButton = styled.button`
   `};
 
   ${(props) => props.login && css `
-    padding-top: 10px; 
+    padding-top: 12px; 
     margin-bottom: 20px;
-    font: 500 16px normal; // font-weight font-size font-style
+    font: 500 14px normal; // font-weight font-size font-style
+  `};
+
+  ${(props) => props.disabled && css `
+    padding-top: 12px; 
+    margin-bottom: 20px;
+    font: 500 14px normal; // font-weight font-size font-style
   `};
 `;
 
