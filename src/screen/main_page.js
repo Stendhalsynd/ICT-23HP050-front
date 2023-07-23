@@ -1,22 +1,22 @@
 import React from "react";
-import Button from "../component/button/Button";
 import Header from "../component/header/Header";
 import Section from "../component/section/Section";
 import Area from "../component/area/Area";
 import styled from "styled-components";
 import Typography from "../component/typography/Typography";
+import Container from "../component/container/Container";
 import colors from "../config/Colors";
 
 const MainPage = ({ form, children }) => {
   return (
-    <Container>
+    <Container background="transparent">
       <Header main paddingTop="97px" />
-      {/* <Button input text="인증코드 발송" /> */}
       <Section left>
-        <Area>
+        <Area height="43%">
           <img
             src={"/img/warning_amber.png"}
             style={{ width: "50px", height: "50px" }}
+            alt="위반사항 이미지"
           ></img>
           <Typography marginTop="39px">
             위반사항
@@ -31,10 +31,11 @@ const MainPage = ({ form, children }) => {
         </Area>
       </Section>
       <Section right>
-        <Area>
+        <Area height="43%">
           <img
             src={"/img/fact_check.png"}
             style={{ width: "50px", height: "50px" }}
+            alt="특이사항 이미지"
           ></img>
           <Typography marginTop="39px">
             부두별 특이사항
@@ -46,14 +47,6 @@ const MainPage = ({ form, children }) => {
     </Container>
   );
 };
-
-const Container = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  background: transparent;
-`;
 
 const Circle = styled.div`
   display: flex;
