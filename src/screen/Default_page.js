@@ -2,18 +2,30 @@ import React from "react";
 import Header from "../component/header/Header";
 import Button from "../component/button/Button";
 import Typography from "../component/typography/Typography";
-import styled, {css} from "styled-components";
-import colors from "../config/Colors"
+import styled, { css } from "styled-components";
+import colors from "../config/Colors";
 import { Link } from "react-router-dom";
 
 const defaultPage = ({ form, children }) => {
   return (
     <Container>
-      <Header paddingTop="228px"/>
-      <Link to={"/CreateAccountPage"} style={{ textDecoration: "none" }}>
-          <CustomButton width="288px" height="54px" style={{ marginTop: "5%", marginLeft: "40%" }}>
-            <RadioBtn/><Typography marginTop="5px" marginLeft="5px" fontSize="15px">START</Typography>
-          </CustomButton>
+      <Header paddingTop="228px" />
+      <Link
+        to={"/CreateAccountPage"}
+        style={{
+          textDecoration: "none",
+          width: "100vw",
+          display: "flex",
+          justifyContent: "center",
+          marginTop: "81px",
+        }}
+      >
+        <CustomButton width="288px" height="54px">
+          <RadioBtn />
+          <Typography marginTop="5px" marginLeft="5px" fontSize="15px">
+            START
+          </Typography>
+        </CustomButton>
       </Link>
     </Container>
   );
@@ -25,7 +37,7 @@ const Container = styled.div`
   flex-direction: column;
   height: 100vh;
   background: transparent;
-  background: ${colors.bg_default}
+  background: ${colors.bg_default};
 `;
 
 const RadioBtn = styled.div`
@@ -43,9 +55,6 @@ const RadioBtn = styled.div`
   border: 3px solid #ffffff;
 `;
 
-const CustomButton = styled(Button)`
-
-`;
-
+const CustomButton = styled(Button)``;
 
 export default defaultPage;

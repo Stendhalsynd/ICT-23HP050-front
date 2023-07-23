@@ -8,12 +8,15 @@ const StyledArea = styled.div`
   justify-content: center;
   align-content: center;
   align-items: center;
-  border-radius: 20px;
-  border: 5px solid ${colors.white};
+  border-radius: ${(props) => props.borderRadius || "20px"};
+  border: ${(props) => props.border || "5px solid white"};
   position: relative;
+  background: ${(props) => props.background || "transparent"};
+  padding: ${(props) => props.padding || "52px 58px"};
 
   width: ${(props) => props.width || "50%"};
-  height: ${(props) => props.height || "43%"};
+  height: ${(props) => props.height};
+  top: ${(props) => props.top};
 `;
 
 function Area({ children, ...props }) {
