@@ -1,35 +1,51 @@
 import React from "react";
-import "../css/default_page.css";
+import Header from "../component/header/Header";
+import Button from "../component/button/Button";
+import Typography from "../component/typography/Typography";
+import styled, {css} from "styled-components";
+import colors from "../config/Colors"
 import { Link } from "react-router-dom";
+
 const defaultPage = ({ form, children }) => {
   return (
-    <>
-      <div className="main_container">
-        {/* <h1>AutomateX</h1> */}
-        <h1 className="main_text">AutoamateX</h1>
-        <Link to={"/CreateAccountPage"}>
-          <button className="default_button">
-            <i className="radioButton"></i>
-            <div>START</div>
-          </button>
-        </Link>
-      </div>
-    </>
-
-    // <div>
-    //   <main>
-    //     <header>
-    //       <h1 className="main_text">AutoamateX</h1>
-    //       <Link to={"/CreateAccountPage"}>
-    //         <button className="default_button">
-    //           <i className="radioButton"></i>
-    //           <h1>START</h1>
-    //         </button>
-    //       </Link>
-    //     </header>
-    //   </main>
-    // </div>
+    <Container>
+      <Header paddingTop="228px"/>
+      <Link to={"/CreateAccountPage"} style={{ textDecoration: "none" }}>
+          <CustomButton width="288px" height="54px" style={{ marginTop: "5%", marginLeft: "40%" }}>
+            <RadioBtn/><Typography marginTop="5px" marginLeft="5px" fontSize="15px">START</Typography>
+          </CustomButton>
+      </Link>
+    </Container>
   );
 };
+
+const Container = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: transparent;
+  background: ${colors.bg_default}
+`;
+
+const RadioBtn = styled.div`
+  width: 15px;
+  height: 15px;
+  align-items: center;
+  box-sizing: border-box;
+  left: 110px;
+  right: 12.5%;
+  top: 20px;
+  bottom: 12.5%;
+  border-radius: 16px;
+  margin-right: 5px;
+  margin-top: 6%;
+  border: 3px solid #ffffff;
+`;
+
+const CustomButton = styled(Button)`
+
+`;
+
 
 export default defaultPage;

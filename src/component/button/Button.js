@@ -4,8 +4,11 @@ import colors from '../../config/Colors';
 const StyledButton = styled.button`
   border-radius: 12px;
   display: flex;
-  width: 100%;
-  padding: 10px 20px;
+  width: ${(props) => props.width};
+  height: ${(props) => props.height};
+  margin-top: ${(props) => props.marginTop};
+  matgin-left: ${(props) => props.marginLeft};
+  padding: 10px, 20px;
   justify-content: center;
   align-content: center;
   font: 500 14px normal var(--font-Roboto); // font-weight font-size font-style font-family
@@ -22,6 +25,12 @@ const StyledButton = styled.button`
     border: 0.7px solid ${colors.black};
     color: ${colors.gray};
     font: 400 16px normal; // font-weight font-size font-style
+  `};
+
+  ${(props) => props.login && css `
+    padding-top: 10px; 
+    margin-bottom: 20px;
+    font: 500 16px normal; // font-weight font-size font-style
   `};
 `;
 
