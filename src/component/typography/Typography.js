@@ -7,9 +7,10 @@ const StyledTypography = styled.div`
   font-weight: ${(props) => (props.fontWeight ? props.fontWeight : 700)};
   line-height: ${(props) => props.lineHeight || "40px"};
 
-  color: ${(props) => props.textColor || colors.white};
+  color: ${(props) => props.color || colors.white};
   text-align: ${(props) => props.textAlign || "center"};
   margin-top: ${(props) => props.marginTop || "0px"};
+  margin-left: ${(props) => props.marginLeft || "0px"};
 `;
 
 function Typography({ children, ...props }) {

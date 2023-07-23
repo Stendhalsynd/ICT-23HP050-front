@@ -14,6 +14,7 @@ const StyledHeader = styled.header`
   ${(props) => props.main && css `
     color: ${colors.white};
   `};
+
 `;
 
 function Header({...props}) {
