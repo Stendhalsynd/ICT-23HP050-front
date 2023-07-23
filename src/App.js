@@ -12,12 +12,12 @@ function App() {
     <BrowserRouter>
       <Reset />
       <div>
-        <DefaultPage />
+        {/* <DefaultPage /> */}
         <Routes>
           <Route path="/defaultPage" Component={DefaultPage} />
           <Route path="/createAccountPage" Component={CreateAccountPage} />
           <Route path="/signUpPage" Component={signUpPage} />
-          <Route path="/signUpPage2" Component={signUpPage2} />
+          {/* <Route path="/signUpPage2" Component={signUpPage2} /> */}
           <Route path="/mainPage" Component={MainPage} />
         </Routes>
       </div>
