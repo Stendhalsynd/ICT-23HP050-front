@@ -6,7 +6,7 @@ const StyledHeader = styled.header`
   display: flex;
   justify-content: center;
   color: ${colors.black};
-  font: normal 400 96px var(--font-Aldrich); // font-style font-weight font-size font-family
+  font: normal 400 96px var(--font-Aldrich); // font-style font-weight font-size font-family, 8vw 로 font-size 수정 건의
   padding-top: ${(props) => props.paddingTop};
   z-index: 1;
 
