@@ -6,20 +6,43 @@ import Button from "../component/button/Button";
 import styled, { css } from "styled-components";
 import colors from "../config/Colors";
 import Typography from "../component/typography/Typography";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import API from "../utils/Api";
+
 const SignUpPage = ({ form, children }) => {
-  const [inputEmail, setEmail] = useState("");
+  const [inputEmail, setInputEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [sendEmail, setSendEmail] = useState("");
+  const navigate = useNavigate();
 
   const handleEmail = (e) => {
     const email = e.target.value;
-    setEmail(email);
+    setInputEmail(email);
     var regExp =
       /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
     if (email.length > 0 && !regExp.test(email))
       setMessage("이메일을 확인해주세요.");
     else if (email.length < 1 || regExp.test(email)) setMessage("");
   };
+
+  const SendCode = (e) => {
+
+    //e.preventDefault();
+    setSendEmail(inputEmail);
+    API.get("/v1/user/email",{
+      params: {
+        email: sendEmail
+      }})
+      .then((response) => {
+        if (response.status == 200)
+        console.log(response.data);
+        console.log("전송성공");
+        navigate('/signUpPage2');
+      })
+      .catch((error) => {
+        console.log(error.response);
+      }); 
+  }
 
   return (
     <Container>
@@ -34,11 +57,14 @@ const SignUpPage = ({ form, children }) => {
           height="100px"
           marginTop="20px"
         />
-        <Link to={"/SignUpPage2"} style={{ textDecoration: "none" }}>
-          <Button login width="484px" height="50px" marginTop="20px">
-            인증코드 발송하기
-          </Button>
-        </Link>
+        <Button login
+          width = "484px" 
+          height = "50px" 
+          marginTop = "20px" 
+          onClick = {SendCode}
+          >
+          인증코드 발송하기
+        </Button>
         <Typography
           fontSize="11px"
           lineHeight="20px"
