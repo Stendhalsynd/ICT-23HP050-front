@@ -10,7 +10,7 @@ import colors from "../config/Colors";
 const MainPage = ({ form, children }) => {
   return (
     <Container background="transparent">
-      <Header main paddingTop="97px" />
+      <StyledHeader main />
       <Section left>
         <Area height="43%">
           <img
@@ -60,6 +60,11 @@ const Circle = styled.div`
   border: 5px solid ${colors.white};
   background-color: ${colors.orange};
   border-radius: 50px;
+`;
+
+const StyledHeader = styled(Header)`
+  padding-top: 50px;
+  font: normal 400 80px var(--font-Aldrich);
 `;
 
 export default MainPage;
