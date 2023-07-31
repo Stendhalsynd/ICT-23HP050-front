@@ -38,3 +38,15 @@ previous versions of npm which has since been addressed. 오류 발생시
 sudo chown -R 501:20 "/Users/[유저명]/.npm"
 ```
 오류에 뜨는 please run: 에 해당하는 명령어 실행
+
+- @ant-design/plots
+
+```
+npm i @ant-design/plots
+```
+
+- bootstrap icons
+
+```
+npm i bootstrap-icons
+```
