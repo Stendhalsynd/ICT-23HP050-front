@@ -1,34 +1,74 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../component/header/Header";
 import Form from "../component/form/Form";
 import InputButton from "../component/button/InputButton";
 import Button from "../component/button/Button";
 import Typography from "../component/typography/Typography";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import colors from "../config/Colors";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import API from "../utils/Api";
 
-const CreateAccountPage = ({ form, children }) => {
+const CreateAccountPage = () => {
   const [inputId, setId] = useState("");
   const [inputPw, setPw] = useState("");
   const [idMessage, setIdMessage] = useState("|  아이디를 입력하세요.  |");
-  const [pwMessage, setPwMessage] = useState("  비밀번호를 입력하세요.  |");
+  const [pwMessage, setPwMessage] = useState("  비밀번호를 입력하세요.  |"); 
+
+  const [user, setUser] = useState({
+    email: "",
+    password: "",
+  });
+
+  const navigate = useNavigate();
 
   const handleInputId = (e) => {
     const id = e.target.value;
-    setId(id);
-    if (id.length > 0) setIdMessage("|  아이디가 입력되었습니다.  |");
-    else if (id.length < 1) setIdMessage("|  아이디를 입력하세요.  |");
+    setId(id)
+    setUser((prevState) => {
+      return { ...prevState, email: e.target.value }
+    })
+    if (id.length > 0) {
+      setIdMessage("|  아이디가 입력되었습니다.  |");
+    } else if (id.length < 1) setIdMessage("|  아이디를 입력하세요.  |");
   };
 
   const handleInputPw = (e) => {
     const pw = e.target.value;
     setPw(pw);
+    setUser((prevState) => {
+      return { ...prevState, password: e.target.value }
+    })
     if (pw.length > 0) {
       setPwMessage("  비밀번호가 입력되었습니다.  |");
     } else if (pw.length < 1) {
       setPwMessage("  비밀번호를 입력하세요.  |");
     }
+    console.log(user.email);
+    console.log(user.password);
+  };
+
+  
+  const SubmitLogin = (e) => {
+    
+    e.preventDefault();
+
+    API.post("/v1/user/login", user)
+      .then((response) => {
+        if (response.status === 200) {
+          console.log(response.data.jwtToken);
+          console.log("로그인 성공");
+          const token = response.data.jwtToken;
+          localStorage.setItem("jwtToken", token);
+          console.log("저장된 토큰" + localStorage.getItem("jwtToken"));
+          navigate('/mainPage');
+        }
+      })
+      .catch((error) => {
+        console.log(error.response);
+        console.log("로그인 실패");
+      });
+    
   };
 
   return (
@@ -65,9 +105,13 @@ const CreateAccountPage = ({ form, children }) => {
           {idMessage}
           {pwMessage}
         </Typography>
-        <Button login width="484px" height="50px" marginTop="20px">
-          로그인
-        </Button>
+          <Button
+            width="484px"
+            height="50px"
+            marginTop="20px"
+            onClick = {SubmitLogin}>
+            로그인
+          </Button>
         <Link to={"/SignUpPage"} style={{ textDecoration: "none" }}>
           이메일로 회원가입
         </Link>
