@@ -41,7 +41,12 @@ function Menu({ children, ...props }) {
         {props.right && (
           <img
             src={"/img/logout_icon.png"}
-            style={{ width: "3vw", height: "3vw", display: "inline-block" }}
+            style={{
+              width: "3vw",
+              height: "3vw",
+              display: "inline-block",
+              filter: "grayscale(100%) invert(100%)",
+            }}
             alt="로그아웃"
           />
         )}
