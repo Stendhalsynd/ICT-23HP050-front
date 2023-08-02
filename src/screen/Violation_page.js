@@ -7,15 +7,158 @@ import Button from "../component/button/Button";
 import colors from "../config/Colors";
 import { Select } from "antd";
 import { Pie, measureTextWidth, Column } from "@ant-design/plots";
+import API from "../utils/Api";
+import axios from "axios";
 
-const onChange = (value) => {
-  console.log(`selected ${value}`);
-};
-const onSearch = (value) => {
-  console.log("search:", value);
-};
+const pieData = [
+  {
+    type: "신흥사",
+    value: 27,
+  },
+  {
+    type: "고려항만",
+    value: 25,
+  },
+  {
+    type: "울산항만운영",
+    value: 18,
+  },
+  {
+    type: "한국보팔터미날",
+    value: 15,
+  },
+  {
+    type: "CJ대한통운",
+    value: 10,
+  },
+  {
+    type: "SK가스",
+    value: 5,
+  },
+];
+const chartData = [
+  {
+    type: "1월",
+    value: 3,
+  },
+  {
+    type: "2월",
+    value: 6,
+  },
+  {
+    type: "3월",
+    value: 6,
+  },
+  {
+    type: "4월",
+    value: 5,
+  },
+  {
+    type: "5월",
+    value: 7,
+  },
+  {
+    type: "6월",
+    value: 6,
+  },
+  {
+    type: "7월",
+    value: 8,
+  },
+  {
+    type: "8월",
+    value: 0,
+  },
+];
 
 const ViolationPage = ({ form, children }) => {
+  const [selectedPieData, setSelectedPieData] = useState([]);
+  const [selectedChartData, setSelectedChartData] = useState([]);
+
+  const onAnnualChange = (value) => {
+    // console.log(`selected ${value}`);
+    if (value) {
+      const selectedPort = value;
+
+      const requestData = {
+        selectedPort,
+      };
+
+      const requestParamData = new URLSearchParams({
+        port: selectedPort,
+      });
+
+      API.post(
+        "/v1/violation/annualViolation?port=%EC%9A%B8%EC%82%B0%EB%B3%B8%ED%95%AD"
+      )
+        .then((response) => {
+          // console.log("response.data : ", response.data);
+          const newData = response.data;
+          setSelectedPieData(
+            newData.map((item) => ({
+              type: item.name,
+              value: item.annualViolationCount,
+            }))
+          );
+        })
+        .catch((error) => {
+          console.log("error : ", error.response);
+        });
+
+      // API.post("/v1/violation/annualViolation", {
+      //   port: selectedPort,
+      // })
+      //   .then((response) => {
+      //     console.log("response.data : ", response.data);
+      //   })
+      //   .catch((error) => {
+      //     console.log("error : ", error.response);
+      //   });
+    }
+  };
+  const onMonthlyChange = (value) => {
+    console.log(`selected ${value}`);
+    if (value) {
+      const selectedPort = value;
+
+      const requestData = {
+        selectedPort,
+      };
+
+      const requestParamData = new URLSearchParams({
+        port: selectedPort,
+      });
+
+      API.post("/v1/violation/monthlyViolation?pier=2%EB%B6%80%EB%91%90")
+        .then((response) => {
+          console.log("response.data : ", response.data);
+          const newData = response.data;
+          setSelectedChartData(
+            newData.map((item, index) => ({
+              type: `${index + 1}월`,
+              value: item,
+            }))
+          );
+        })
+        .catch((error) => {
+          console.log("error : ", error.response);
+        });
+
+      // API.post("/v1/violation/annualViolation", {
+      //   port: selectedPort,
+      // })
+      //   .then((response) => {
+      //     console.log("response.data : ", response.data);
+      //   })
+      //   .catch((error) => {
+      //     console.log("error : ", error.response);
+      //   });
+    }
+  };
+  const onSearch = (value) => {
+    console.log("search:", value);
+  };
+
   return (
     <StyledCoverContainer>
       <StyledHeader />
@@ -34,7 +177,7 @@ const ViolationPage = ({ form, children }) => {
               showSearch
               placeholder="울산본항"
               optionFilterProp="children"
-              onChange={onChange}
+              onChange={onAnnualChange}
               onSearch={onSearch}
               filterOption={(input, option) =>
                 (option?.label ?? "")
@@ -71,7 +214,9 @@ const ViolationPage = ({ form, children }) => {
               position: "relative",
             }}
           >
-            <DemoPie />
+            <DemoPie
+              data={selectedPieData.length > 0 ? selectedPieData : pieData}
+            />
           </div>
         </StyledContainer>
         <StyledContainer>
@@ -80,7 +225,7 @@ const ViolationPage = ({ form, children }) => {
               showSearch
               placeholder="1부두"
               optionFilterProp="children"
-              onChange={onChange}
+              onChange={onMonthlyChange}
               onSearch={onSearch}
               filterOption={(input, option) =>
                 (option?.label ?? "")
@@ -117,7 +262,11 @@ const ViolationPage = ({ form, children }) => {
               position: "relative",
             }}
           >
-            <DemoColumn />
+            <DemoColumn
+              data={
+                selectedChartData.length > 0 ? selectedChartData : chartData
+              }
+            />
           </div>
         </StyledContainer>
       </div>
@@ -158,7 +307,7 @@ const StyledHeader = styled(Header)`
   font: normal 400 8vw var(--font-Aldrich);
 `;
 
-const DemoPie = () => {
+const DemoPie = (props) => {
   function renderStatistic(containerWidth, text, style) {
     const { width: textWidth, height: textHeight } = measureTextWidth(
       text,
@@ -186,32 +335,8 @@ const DemoPie = () => {
     };">${text}</div>`;
   }
 
-  const data = [
-    {
-      type: "신흥사",
-      value: 27,
-    },
-    {
-      type: "고려항만",
-      value: 25,
-    },
-    {
-      type: "울산항만운영",
-      value: 18,
-    },
-    {
-      type: "한국보팔터미날",
-      value: 15,
-    },
-    {
-      type: "CJ대한통운",
-      value: 10,
-    },
-    {
-      type: "SK가스",
-      value: 5,
-    },
-  ];
+  let data = props.data;
+
   const config = {
     appendPadding: 10,
     data,
@@ -277,41 +402,42 @@ const DemoPie = () => {
   return <Pie {...config} />;
 };
 
-const DemoColumn = () => {
-  const data = [
-    {
-      type: "1월",
-      value: 3,
-    },
-    {
-      type: "2월",
-      value: 6,
-    },
-    {
-      type: "3월",
-      value: 6,
-    },
-    {
-      type: "4월",
-      value: 5,
-    },
-    {
-      type: "5월",
-      value: 7,
-    },
-    {
-      type: "6월",
-      value: 6,
-    },
-    {
-      type: "7월",
-      value: 8,
-    },
-    {
-      type: "8월",
-      value: 0,
-    },
-  ];
+const DemoColumn = (props) => {
+  let data = props.data;
+  // const data = [
+  //   {
+  //     type: "1월",
+  //     value: 3,
+  //   },
+  //   {
+  //     type: "2월",
+  //     value: 6,
+  //   },
+  //   {
+  //     type: "3월",
+  //     value: 6,
+  //   },
+  //   {
+  //     type: "4월",
+  //     value: 5,
+  //   },
+  //   {
+  //     type: "5월",
+  //     value: 7,
+  //   },
+  //   {
+  //     type: "6월",
+  //     value: 6,
+  //   },
+  //   {
+  //     type: "7월",
+  //     value: 8,
+  //   },
+  //   {
+  //     type: "8월",
+  //     value: 0,
+  //   },
+  // ];
   const paletteSemanticRed = "#F4664A";
   const brandColor = "#5B8FF9";
   const config = {
