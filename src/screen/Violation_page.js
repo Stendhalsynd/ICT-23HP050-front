@@ -75,24 +75,14 @@ const ViolationPage = ({ form, children }) => {
   const [selectedPieData, setSelectedPieData] = useState([]);
   const [selectedChartData, setSelectedChartData] = useState([]);
 
-  const onAnnualChange = (value) => {
-    // console.log(`selected ${value}`);
-    if (value) {
-      const selectedPort = value;
-
-      const requestData = {
-        selectedPort,
-      };
-
-      const requestParamData = new URLSearchParams({
-        port: selectedPort,
-      });
-
-      API.post(
-        "/v1/violation/annualViolation?port=%EC%9A%B8%EC%82%B0%EB%B3%B8%ED%95%AD"
-      )
+  const onAnnualChange = (port) => {
+    if (port) {
+      API.get("/v1/violation/annualViolation", {
+        params: {
+          port,
+        },
+      })
         .then((response) => {
-          // console.log("response.data : ", response.data);
           const newData = response.data;
           setSelectedPieData(
             newData.map((item) => ({
@@ -104,16 +94,6 @@ const ViolationPage = ({ form, children }) => {
         .catch((error) => {
           console.log("error : ", error.response);
         });
-
-      // API.post("/v1/violation/annualViolation", {
-      //   port: selectedPort,
-      // })
-      //   .then((response) => {
-      //     console.log("response.data : ", response.data);
-      //   })
-      //   .catch((error) => {
-      //     console.log("error : ", error.response);
-      //   });
     }
   };
   const onMonthlyChange = (value) => {
@@ -129,7 +109,7 @@ const ViolationPage = ({ form, children }) => {
         port: selectedPort,
       });
 
-      API.post("/v1/violation/monthlyViolation?pier=2%EB%B6%80%EB%91%90")
+      API.get("/v1/violation/monthlyViolation?pier=2%EB%B6%80%EB%91%90")
         .then((response) => {
           console.log("response.data : ", response.data);
           const newData = response.data;
