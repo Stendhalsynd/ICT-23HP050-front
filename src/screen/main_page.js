@@ -1,12 +1,14 @@
 import React from "react";
+
 import Header from "../component/header/Header";
 import Section from "../component/section/Section";
 import Area from "../component/area/Area";
-import styled from "styled-components";
 import Typography from "../component/typography/Typography";
 import Container from "../component/container/Container";
-import colors from "../config/Colors";
 import Menu from "../component/menu/Menu";
+
+import styled from "styled-components";
+import colors from "../config/Colors";
 import { Link } from "react-router-dom";
 
 const MainPage = ({ form, children }) => {
@@ -48,18 +50,32 @@ const MainPage = ({ form, children }) => {
         </Link>
       </Section>
       <Section right>
-        <Area height="43%">
-          <img
-            src={"/img/fact_check.png"}
-            style={{ width: "50px", height: "50px" }}
-            alt="특이사항 이미지"
-          ></img>
-          <Typography marginTop="39px">
-            부두별 특이사항
-            <br />
-            확인하기
-          </Typography>
-        </Area>
+        <Link
+          to="/portPage"
+          style={{
+            width: "50vw",
+            height: "42vh",
+            left: "8vw",
+            top: "-6vh",
+            display: "flex",
+
+            position: "relative",
+            textDecoration: "none",
+          }}
+        >
+          <Area height="100%">
+            <img
+              src={"/img/fact_check.png"}
+              style={{ width: "50px", height: "50px" }}
+              alt="특이사항 이미지"
+            ></img>
+            <Typography marginTop="39px">
+              부두별 특이사항
+              <br />
+              확인하기
+            </Typography>
+          </Area>
+        </Link>
       </Section>
     </Container>
   );

@@ -1,11 +1,14 @@
 import React, { Component } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import DefaultPage from "./screen/Default_page";
 import CreateAccountPage from "./screen/Create_account_page";
 import signUpPage from "./screen/Signup_page";
 import SignUpPage2 from "./screen/Signup2_page";
 import MainPage from "./screen/main_page";
 import ViolationPage from "./screen/Violation_page";
+import PortPage from "./screen/Port_page";
+
 import { Reset } from "styled-reset";
 
 function App() {
@@ -20,6 +23,7 @@ function App() {
           <Route path="/signUpPage2" Component={SignUpPage2} />
           <Route path="/mainPage" Component={MainPage} />
           <Route path="/violationPage" Component={ViolationPage} />
+          <Route path="/portPage" Component={PortPage} />
         </Routes>
       </div>
     </BrowserRouter>
