@@ -11,8 +11,8 @@ import API from "../utils/Api";
 
 const SignUpPage = ({ form, children }) => {
   const [inputEmail, setInputEmail] = useState("");
+  const [isCodeSent, setIsCodeSent] = useState(false);
   const [message, setMessage] = useState("");
-  const [sendEmail, setSendEmail] = useState("");
   const navigate = useNavigate();
 
   const handleEmail = (e) => {
@@ -25,24 +25,23 @@ const SignUpPage = ({ form, children }) => {
     else if (email.length < 1 || regExp.test(email)) setMessage("");
   };
 
-  const SendCode = (e) => {
-
-    //e.preventDefault();
-    setSendEmail(inputEmail);
-    API.get("/v1/user/email",{
-      params: {
-        email: sendEmail
-      }})
-      .then((response) => {
-        if (response.status == 200)
-        console.log(response.data);
-        console.log("전송성공");
-        navigate('/signUpPage2');
-      })
-      .catch((error) => {
-        console.log(error.response);
-      }); 
-  }
+  const SendCode = async () => {
+    if (!isCodeSent) {
+      try {
+        const response = await API.post("/v1/user/email", {
+          email: inputEmail,
+        });
+        if (response.status === 200) {
+          console.log(response.data);
+          console.log("전송성공");
+          navigate("/signUpPage2");
+        }
+      } catch (e) {
+        console.error(e);
+        console.log(e.response);
+      }
+    }
+  };
 
   return (
     <Container>
@@ -51,18 +50,19 @@ const SignUpPage = ({ form, children }) => {
         <InputButton
           type="text"
           placeholder="이메일"
-          value={inputEmail}
+          // value={inputEmail}
           onChange={handleEmail}
           width="440px"
           height="100px"
           marginTop="20px"
         />
-        <Button login
-          width = "484px" 
-          height = "50px" 
-          marginTop = "20px" 
-          onClick = {SendCode}
-          >
+        <Button
+          login
+          width="484px"
+          height="50px"
+          marginTop="20px"
+          onClick={SendCode}
+        >
           인증코드 발송하기
         </Button>
         <Typography

@@ -1,14 +1,28 @@
 import React, { useState } from "react";
 // import "../css/signup2_page.css"
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Container from "../component/container/Container";
 import Header from "../component/header/Header";
 import Area from "../component/area/Area";
 import Button from "../component/button/Button";
 import Typography from "../component/typography/Typography";
 import Divider from "../component/divider/Divider";
+import API from "../utils/Api";
+
+
 
 const SignUpPage2 = ({ form, children }) => {
+  const [inputCode, setCode] = useState("");
+  const [codeMessage, setCodeMessage] = useState("");
+
+  const navigate = useNavigate();
+
+  //인증코드 입력 3분 시간
+  const handleInputCode = (e) => {
+    const code = e.target.value;
+    setCode(code)
+    
+  }
   return (
     <Container flex>
       <Header signup2 paddingTop="56px" />
@@ -34,6 +48,9 @@ const SignUpPage2 = ({ form, children }) => {
         <Typography success alignSelf="flex-start" marginTop="14px">
           인증코드를 입력해주세요.
         </Typography>
+        <Button login marginTop="23px">
+          <Typography disabled> 인증코드 확인하기 </Typography>
+        </Button>
         <Divider margin="12px 0 0" />
         <Button
           input
