@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from "react";
-import Header from "../component/header/Header";
-import styled from "styled-components";
-import Container from "../component/container/Container";
-import Menu from "../component/menu/Menu";
-import Button from "../component/button/Button";
+
+// import Header from "../component/header/Header";
+// import Container from "../component/container/Container";
+// import Menu from "../component/menu/Menu";
+// import Button from "../component/button/Button";
+
+import { Button, Container, Header, Menu } from "../component";
+
 import colors from "../config/Colors";
+import styled from "styled-components";
 import { Select } from "antd";
 import { Pie, measureTextWidth, Column } from "@ant-design/plots";
 import API from "../utils/Api";
