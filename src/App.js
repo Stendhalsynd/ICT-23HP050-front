@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import DefaultPage from "./screen/Default_page";
@@ -8,6 +8,16 @@ import SignUpPage2 from "./screen/Signup2_page";
 import MainPage from "./screen/main_page";
 import ViolationPage from "./screen/Violation_page";
 import PortPage from "./screen/Port_page";
+
+// import {
+//   CreateAccountPage,
+//   MainPage,
+//   PortPage,
+//   SignUpPage,
+//   SignUpPage2,
+//   ViolationPage,
+//   defaultPage,
+// } from "./screen";
 
 import { Reset } from "styled-reset";
 

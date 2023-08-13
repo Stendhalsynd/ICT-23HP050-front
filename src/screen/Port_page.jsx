@@ -1,9 +1,7 @@
-import colors from "../config/Colors";
-import Header from "../component/header/Header";
+import { Button, Container, Header, Menu } from "../component";
+
 import styled from "styled-components";
-import Container from "../component/container/Container";
-import Menu from "../component/menu/Menu";
-import Button from "../component/button/Button";
+import colors from "../config/Colors";
 
 const PortPage = () => {
   return (

@@ -1,6 +1,8 @@
+import { Link } from "react-router-dom";
 import styled, { css } from "styled-components";
 
 const StyledMenu = styled.div`
+  z-index: 10;
   position: absolute;
   padding-top: ${(props) => props.paddingTop || "8vh"};
   padding-left: ${(props) => props.paddingLeft || "3vw"};
@@ -55,11 +57,13 @@ function Menu({ children, ...props }) {
   } else {
     return (
       <StyledMenu {...props}>
-        <img
-          src={"/img/arrow_back_ios.png"}
-          style={{ width: "3vw", height: "3vw", display: "inline-block" }}
-          alt="뒤로가기"
-        ></img>
+        <Link to="/mainPage">
+          <img
+            src={"/img/arrow_back_ios.png"}
+            style={{ width: "3vw", height: "3vw", display: "inline-block" }}
+            alt="뒤로가기"
+          ></img>
+        </Link>
         <img
           src={"/img/logout_icon.png"}
           style={{ width: "3vw", height: "3vw", display: "inline-block" }}

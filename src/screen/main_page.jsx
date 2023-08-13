@@ -1,11 +1,20 @@
 import React from "react";
 
-import Header from "../component/header/Header";
-import Section from "../component/section/Section";
-import Area from "../component/area/Area";
-import Typography from "../component/typography/Typography";
-import Container from "../component/container/Container";
-import Menu from "../component/menu/Menu";
+// import Header from "../component/header/Header";
+// import Section from "../component/section/Section";
+// import Area from "../component/area/Area";
+// import Typography from "../component/typography/Typography";
+// import Container from "../component/container/Container";
+// import Menu from "../component/menu/Menu";
+
+import {
+  Area,
+  Container,
+  Header,
+  Menu,
+  Section,
+  Typography,
+} from "../component";
 
 import styled from "styled-components";
 import colors from "../config/Colors";
@@ -15,7 +24,7 @@ const MainPage = ({ form, children }) => {
   return (
     <Container background="transparent">
       <StyledHeader main />
-      <Menu right style={{ zIndex: "10" }} />
+      <Menu right />
       <Section left>
         <Link
           to="/violationPage"
