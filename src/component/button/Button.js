@@ -40,7 +40,6 @@ const StyledButton = styled.button`
       padding-top: 12px;
       margin-bottom: 20px;
       font: 500 14px normal; // font-weight font-size font-style
-      onClick: ${props.onClick};
     `};
 
   ${(props) =>
