@@ -6,6 +6,8 @@ import styled from "styled-components";
 import { Button, Container, Header, Menu } from "../component";
 
 import colors from "../config/Colors";
+import Modal from "react-modal";
+import ChatBotModal from "./ChatBotModal";
 
 const { RangePicker } = DatePicker;
 
@@ -57,6 +59,12 @@ const PortPage = () => {
       pageSize: 10,
     },
   });
+
+  /**Modal 관련 */
+  const [modalOpen, setModalOpen] = useState(false);
+  const showModal = () => {
+    setModalOpen(true);
+  };
 
   const handleDateChange = (_, dateStrings) => {
     const [start, end] = dateStrings;
@@ -228,7 +236,8 @@ const PortPage = () => {
           width: "30vw",
         }}
       >
-        <Button>AutomateX GPT</Button>
+        <Button onClick={showModal}>AutomateX GPT</Button>
+        {modalOpen && <ChatBotModal setModalOpen={setModalOpen} />}
       </div>
     </StyledCoverContainer>
   );
