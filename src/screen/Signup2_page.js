@@ -16,7 +16,7 @@ import API from "../utils/Api";
 
 const SignUpPage2 = ({ form, children }) => {
   const location =  useLocation();
-  const inputEmail = "1234@12134";
+  const inputEmail = "1234@1213asd4";
  //console.log('state', location.state);
   //const { inputEmail } = location.state; 서버 고쳐지면? 
   const [inputCode, setCode] = useState("");
