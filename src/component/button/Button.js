@@ -3,11 +3,12 @@ import colors from "../../config/Colors";
 
 const StyledButton = styled.button`
   border-radius: 12px;
+  border: ${(props) => props.border};
   display: flex;
   width: ${(props) => props.width || "100%"};
   height: ${(props) => props.height};
   margin-top: ${(props) => props.marginTop};
-  matgin-left: ${(props) => props.marginLeft};
+  margin-left: ${(props) => props.marginLeft};
   padding: 10px 20px;
   flex-direction: ${(props) => props.flexDirection || "row"};
   justify-content: ${(props) => props.justifyContent || "center"};

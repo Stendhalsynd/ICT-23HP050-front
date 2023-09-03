@@ -34,7 +34,7 @@ const SignUpPage = ({ form, children }) => {
         if (response.status === 200) {
           console.log(response.data);
           console.log("전송성공");
-          navigate("/signUpPage2");
+          navigate("/signUpPage2", { state: inputEmail });
         }
       } catch (e) {
         console.error(e);

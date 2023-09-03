@@ -42,6 +42,14 @@ const StyledTypography = styled.div`
       font: 500 14px normal; // font-weight font-size font-style
       line-height: 20px;
     `};
+
+    ${(props) =>
+      props.red &&
+      css`
+        color: ${colors.red};
+        font: 500 16px normal; // font-weight font-size font-style
+        line-height: 20px;
+      `};  
 `;
 
 function Typography({ children, ...props }) {
