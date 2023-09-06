@@ -6,7 +6,7 @@ import styled from "styled-components";
 import { Button, Container, Header, Menu } from "../component";
 
 import colors from "../config/Colors";
-import Modal from "react-modal";
+
 import ChatBotModal from "./ChatBotModal";
 
 const { RangePicker } = DatePicker;

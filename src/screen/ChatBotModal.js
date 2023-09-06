@@ -1,24 +1,24 @@
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import colors from "../config/Colors";
-import Modal from "../component/modal";
+import Modal from "../component/modal/Modal";
 
 
-function ChatBotModal({ setModalOpen}) {
+function ChatBotModal({setModalOpen}) {
     // 모달 끄기 
     const closeModal = () => {
         setModalOpen(false);
     };
 
     return (
-        <div >
-            <Modal>
-            <button onClick={closeModal}>
+        <Modal>
+             <button onClick={closeModal}>
                 X
             </button>
             <p>모달창입니다.</p>
-            </Modal>
-            
-        </div>
+        </Modal>
+           
+
     );
 }
 export default ChatBotModal;

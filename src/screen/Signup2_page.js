@@ -16,9 +16,7 @@ import API from "../utils/Api";
 
 const SignUpPage2 = ({ form, children }) => {
   const location =  useLocation();
-  const inputEmail = "1234@1213asd4";
- //console.log('state', location.state);
-  //const { inputEmail } = location.state; 서버 고쳐지면? 
+  const inputEmail  = location.state.email;  
   const [inputCode, setCode] = useState("");
   const [inputName, setName] = useState("");
   const [inputPW1, setPW1] = useState("");
@@ -138,7 +136,7 @@ const SignUpPage2 = ({ form, children }) => {
         if (response.status === 200) {
           console.log(response.data.token);
           console.log("회원가입 성공");
-          const token = response.dsata.token;
+          //const token = response.dsata.token; 
           //토큰 저장해줘야함
           navigate("/mainPage");
         }
