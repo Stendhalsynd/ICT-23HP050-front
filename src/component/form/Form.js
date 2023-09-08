@@ -7,7 +7,7 @@ const StyledForm = styled.div`
   align-items: center;
   gap: 10px;
 
-  width: 600px;
+  width: 60vw;
   height: ${(props) => props.height || "386px"};
 
   background: #ffffff;
@@ -20,7 +20,7 @@ const StyledForm = styled.div`
   font-size: 16px;
   line-height: 19px;
 
-  margin-top: ${(props) => props.marginTop || "132px"};
+  margin-top: ${(props) => props.marginTop || "10vh"};
 `;
 
 function Form({ children, ...props }) {

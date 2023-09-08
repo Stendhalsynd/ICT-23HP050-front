@@ -1,12 +1,4 @@
- import React from "react";
-
-// import Header from "../component/header/Header";
-// import Section from "../component/section/Section";
-// import Area from "../component/area/Area";
-// import Typography from "../component/typography/Typography";
-// import Container from "../component/container/Container";
-// import Menu from "../component/menu/Menu";
-
+import React from "react";
 import {
   Area,
   Container,
@@ -22,7 +14,7 @@ import { Link } from "react-router-dom";
 
 const MainPage = ({ form, children }) => {
   return (
-    <Container background="transparent">
+    <Container background="transparent" height="100vh">
       <StyledHeader main />
       <Menu right />
       <Section left>
@@ -39,7 +31,7 @@ const MainPage = ({ form, children }) => {
             textDecoration: "none",
           }}
         >
-          <Area height="100%">
+          <Area height="100%" margin="15px 0">
             <img
               src={"/img/warning_amber.png"}
               style={{ width: "50px", height: "50px" }}
@@ -72,7 +64,7 @@ const MainPage = ({ form, children }) => {
             textDecoration: "none",
           }}
         >
-          <Area height="100%">
+          <Area height="100%" margin="15px 0">
             <img
               src={"/img/fact_check.png"}
               style={{ width: "50px", height: "50px" }}

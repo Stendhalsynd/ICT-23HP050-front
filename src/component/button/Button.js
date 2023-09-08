@@ -7,13 +7,14 @@ const StyledButton = styled.button`
   display: flex;
   width: ${(props) => props.width || "100%"};
   height: ${(props) => props.height};
-  margin-top: ${(props) => props.marginTop};
+  margin-top: ${(props) => props.marginTop || "1.6vh"};
   margin-left: ${(props) => props.marginLeft};
-  padding: 10px 20px;
+  margin-bottom: ${(props) => props.marginBottom};
+  padding: 1.4vw 2.4vw;
   flex-direction: ${(props) => props.flexDirection || "row"};
   justify-content: ${(props) => props.justifyContent || "center"};
   align-content: ${(props) => props.alignContent || "center"};
-  font: 500 14px normal var(--font-Roboto); // font-weight font-size font-style font-family
+  font: 500 1.6vw normal var(--font-Roboto); // font-weight font-size font-style font-family
   line-height: 20px;
 
   cursor: pointer;
@@ -31,16 +32,14 @@ const StyledButton = styled.button`
       background: ${colors.white};
       border: 0.7px solid ${colors.black};
       color: ${colors.gray};
-      font: 400 16px normal; // font-weight font-size font-style
+      font: 400 1.8vw normal; // font-weight font-size font-style
       placeholder: ${(props) => props.placeholder};
     `};
 
   ${(props) =>
     props.login &&
     css`
-      padding-top: 12px;
-      margin-bottom: 20px;
-      font: 500 14px normal; // font-weight font-size font-style
+      font: 500 1.8vw normal; // font-weight font-size font-style
     `};
 
   ${(props) =>
@@ -48,25 +47,24 @@ const StyledButton = styled.button`
     css`
       background: ${colors.bg_disabled};
       border: none;
-      padding-top: 12px;
-      margin-bottom: 20px;
+
       color: ${colors.white};
-      font: 500 14px normal; // font-weight font-size font-style
+      font: 500 1.8vw normal; // font-weight font-size font-style
     `};
 `;
 
 const Input = styled.input`
-  padding: 10px 20px;
+  padding: 1.4vw 2.4vw;
   border: 0.7px solid ${colors.black};
   border-radius: 12px;
   background: ${colors.white};
 
   // 버튼 내부의 입력 요소의 색상을 지정합니다.
-  color: ${colors.gray};
+  color: ${colors.black};
 
   // 기본적으로 입력 요소는 버튼과 동일한 너비를 가지도록 합니다.
   width: 100%;
-  font: 400 16px normal; // font-weight font-size font-style
+  font: 400 1.2vw normal; // font-weight font-size font-style
   line-height: 20px;
   box-sizing: border-box;
   margin-top: ${(props) => props.marginTop};

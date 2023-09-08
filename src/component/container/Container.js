@@ -5,8 +5,8 @@ const StyledContainer = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  height: 100vh;
   background: ${(props) => props.background || colors.bg_default};
+  height: ${(props) => props.height};
 
   ${(props) =>
     props.flex &&

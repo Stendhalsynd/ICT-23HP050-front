@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 const defaultPage = ({ form, children }) => {
   return (
     <Container>
-      <Header paddingTop="228px" />
+      <Header />
       <Link
         to={"/CreateAccountPage"}
         style={{
@@ -36,7 +36,6 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   height: 100vh;
-  background: transparent;
   background: ${colors.bg_default};
 `;
 
