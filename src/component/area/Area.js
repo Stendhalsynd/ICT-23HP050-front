@@ -16,7 +16,8 @@ const StyledArea = styled.div`
 
   width: ${(props) => props.width || "50%"};
   height: ${(props) => props.height};
-  top: ${(props) => props.top};
+  margin-top: ${(props) => props.marginTop};
+  margin: ${(props) => props.margin || "30vh 0"};
 `;
 
 function Area({ children, ...props }) {

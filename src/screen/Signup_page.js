@@ -34,7 +34,7 @@ const SignUpPage = ({ form, children }) => {
         if (response.status === 200) {
           console.log(response.data);
           console.log("전송성공");
-          navigate("/signUpPage2", { state: {email : inputEmail} });
+          navigate("/signUpPage2", { state: { email: inputEmail } });
         }
       } catch (e) {
         console.error(e);
@@ -46,24 +46,25 @@ const SignUpPage = ({ form, children }) => {
   return (
     <Container>
       <Header paddingTop="62px" />
-      <Form height="480px" marginTop="30px">
+      <Form height="60vh" marginTop="5vh">
         <InputButton
           type="text"
           placeholder="이메일"
           // value={inputEmail}
           onChange={handleEmail}
-          width="440px"
+          width="40vw"
           height="100px"
           marginTop="20px"
         />
         <Button
           login
-          width="484px"
-          height="50px"
-          marginTop="20px"
+          width="45vw"
+          height="7vh"
+          marginTop="1vh"
+          marginBottom="1.3vh"
           onClick={SendCode}
         >
-          인증코드 발송하기
+          <Typography normal>인증코드 발송하기</Typography>
         </Button>
         <Typography
           fontSize="11px"
@@ -76,23 +77,23 @@ const SignUpPage = ({ form, children }) => {
         <InputButton
           type="password"
           placeholder="비밀번호"
-          width="440px"
+          width="40vw"
           height="50px"
         />
         <InputButton
           type="password"
           placeholder="비밀번호 확인"
-          width="440px"
+          width="40vw"
           height="50px"
         />
         <Button
           disabled={true}
-          width="484px"
-          height="50px"
-          marginTop="20px"
+          width="45vw"
+          height="7vh"
+          marginTop="1vh"
           background={colors.btn_disabled}
         >
-          회원가입 완료
+          <Typography normal>회원가입 완료</Typography>
         </Button>
       </Form>
     </Container>

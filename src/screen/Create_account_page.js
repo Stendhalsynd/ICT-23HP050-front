@@ -86,7 +86,7 @@ const CreateAccountPage = () => {
           placeholder="이메일"
           value={inputId}
           onChange={handleInputId}
-          width="440px"
+          width="40vw"
           height="100px"
           marginTop="20px"
         />
@@ -95,7 +95,7 @@ const CreateAccountPage = () => {
           placeholder="비밀번호"
           value={inputPw}
           onChange={handleInputPw}
-          width="440px"
+          width="40vw"
           height="50px"
         />
         <Typography fontSize="13px" lineHeight="20px" color={colors.red}>
@@ -103,7 +103,7 @@ const CreateAccountPage = () => {
           {pwMessage}
         </Typography>
         <Button
-          width="484px"
+          width="45vw"
           height="50px"
           marginTop="20px"
           onClick={SubmitLogin}
@@ -122,9 +122,9 @@ const Container = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  height: 100vh;
   background: ${colors.bg_default};
   align-items: center;
+  padding-bottom: 20vh;
 `;
 
 export default CreateAccountPage;

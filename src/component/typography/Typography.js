@@ -17,21 +17,21 @@ const StyledTypography = styled.div`
     props.normal &&
     css`
       color: ${colors.black};
-      font: 400 16px normal; // font-weight font-size font-style
+      font: 400 1.2vw normal; // font-weight font-size font-style
     `};
 
   ${(props) =>
     props.success &&
     css`
       color: ${colors.green};
-      font: 400 16px normal; // font-weight font-size font-style
+      font: 400 1.2vw normal; // font-weight font-size font-style
     `};
 
   ${(props) =>
     props.input &&
     css`
       color: ${colors.gray};
-      font: 400 16px normal; // font-weight font-size font-style
+      font: 400 1.2vw normal; // font-weight font-size font-style
       line-height: 20px;
     `};
 
@@ -39,17 +39,16 @@ const StyledTypography = styled.div`
     props.disabled &&
     css`
       color: ${colors.white};
-      font: 500 14px normal; // font-weight font-size font-style
-      line-height: 20px;
+      font: 500 1.2vw normal; // font-weight font-size font-style
     `};
 
-    ${(props) =>
-      props.red &&
-      css`
-        color: ${colors.red};
-        font: 500 16px normal; // font-weight font-size font-style
-        line-height: 20px;
-      `};  
+  ${(props) =>
+    props.red &&
+    css`
+      color: ${colors.red};
+      font: 500 1.2vw normal; // font-weight font-size font-style
+      line-height: 20px;
+    `};
 `;
 
 function Typography({ children, ...props }) {
