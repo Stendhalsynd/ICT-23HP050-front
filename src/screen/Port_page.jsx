@@ -7,7 +7,10 @@ import { Button, Container, Header, Menu } from "../component";
 
 import colors from "../config/Colors";
 
-import ChatBotModal from "./ChatBotModal";
+import { Modal } from "../features/modals/Modal";
+
+import { modalStatus, modalOpened } from "../features/modals/modalsSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const { RangePicker } = DatePicker;
 
@@ -46,6 +49,10 @@ const getRandomuserParams = (params) => ({
 });
 
 const PortPage = () => {
+  /** gpt modal */
+  const dispatch = useDispatch();
+  const isOpened = useSelector(modalStatus);
+
   /** DatePicker */
   const [startDate, setStartDate] = useState("");
   const [deadline, setDeadline] = useState("");
@@ -56,16 +63,11 @@ const PortPage = () => {
   const [tableParams, setTableParams] = useState({
     pagination: {
       current: 1,
-      pageSize: 10,
+      pageSize: 5,
     },
   });
 
   /**Modal 관련 */
-  const [modalOpen, setModalOpen] = useState(false);
-  const showModal = () => {
-    setModalOpen(true);
-  };
-
   const handleDateChange = (_, dateStrings) => {
     const [start, end] = dateStrings;
     setStartDate(start);
@@ -236,8 +238,14 @@ const PortPage = () => {
           width: "30vw",
         }}
       >
-        <Button onClick={showModal}>AutomateX GPT</Button>
-        {modalOpen && <ChatBotModal setModalOpen={setModalOpen} />}
+        <Button
+          onClick={() => {
+            dispatch(modalOpened());
+          }}
+        >
+          AutomateX GPT
+        </Button>
+        {isOpened && <Modal />}
       </div>
     </StyledCoverContainer>
   );

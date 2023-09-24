@@ -27,7 +27,7 @@ function App() {
       <Reset />
       <div>
         <Routes>
-          <Route path="/defaultPage" Component={DefaultPage} />
+          <Route path="/" Component={DefaultPage} />
           <Route path="/createAccountPage" Component={CreateAccountPage} />
           <Route path="/signUpPage" Component={signUpPage} />
           <Route path="/signUpPage2" Component={SignUpPage2} />
